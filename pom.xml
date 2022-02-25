@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>app.netlify.madduci</groupId>
+    <artifactId>jms-example</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>java-module-system-example</name>
+
+    <packaging>pom</packaging>
+
+    <properties>
+        <java.version>11</java.version>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.testSourceEncoding>UTF-8</project.build.testSourceEncoding>
+        <compiler-plugin.version>3.8.1</compiler-plugin.version>
+        <fmt-plugin.version>2.14</fmt-plugin.version>
+
+    </properties>
+
+    <modules>
+        <module>api</module>
+        <module>lib</module>
+        <module>quarkus-server</module>
+        <module>jetty-rest-server</module>
+    </modules>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                        <release>${maven.compiler.target}</release>
+                        <compilerArgs>
+                            <arg>-parameters</arg>
+                        </compilerArgs>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>com.spotify.fmt</groupId>
+                    <artifactId>fmt-maven-plugin</artifactId>
+                    <version>${fmt-plugin.version}</version>
+                    <configuration>
+                        <sourceDirectory>src/main/java</sourceDirectory>
+                        <testSourceDirectory>src/test/java</testSourceDirectory>
+                        <verbose>false</verbose>
+                        <filesNamePattern>.*\.java</filesNamePattern>
+                        <skip>false</skip>
+                        <skipSortingImports>false</skipSortingImports>
+                        <style>google</style>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>format-code</id>
+                            <phase>process-sources</phase>
+                            <goals>
+                                <goal>format</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify.fmt</groupId>
+                <artifactId>fmt-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>

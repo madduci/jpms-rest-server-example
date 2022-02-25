@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <parent>
+        <groupId>app.netlify.madduci</groupId>
+        <artifactId>jms-example</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>lib</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <bouncy.castle.version>1.70</bouncy.castle.version>
+    </properties>
+
+    <dependencies>
+        <!-- api -->
+        <dependency>
+            <groupId>${project.parent.groupId}</groupId>
+            <artifactId>api</artifactId>
+            <version>${project.parent.version}</version>
+        </dependency>
+        <!-- bouncy castle -->
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcprov-jdk15on</artifactId>
+            <version>${bouncy.castle.version}</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+</project>
